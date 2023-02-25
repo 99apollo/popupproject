@@ -1,0 +1,79 @@
+{% if question_list %}
+    <ul>
+    {% for question in question_list %}
+        <li><a href="/detail/{{ question.id }}/">{{ question.subject }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}
+<body>
+    <input type = "button" value = "버튼의 여러부분을 클릭해보세요"
+           OnClick = "javascript:showCoords(event)"
+           style="width:300px;height:70px">
+
+</body>
+<script>
+    var test = 0
+    function action_coords(event) {
+    var x1 = event.clientX;
+    var y1 = event.clientY;
+    var x2 = event.offsetX;
+    var y2 = event.offsetY;
+    var x3 = event.screenX;
+    var y3 = event.screenY;
+    var background_img=["#FC5C7D","6A82FB"];
+
+    const body = document.getElementById("debug_out");
+    const originalBackground = body.style.backgroundColor;
+
+    body.addEventListener('mousedown', () => {
+      // 마우스 버튼이 눌릴 때의 이벤트 처리
+      body.style.backgroundColor = 'blue';
+
+
+    });
+
+
+
+
+    body.addEventListener('mouseup', () => {
+      // 마우스 버튼이 떼어질 때의 이벤트 처리
+      body.style.backgroundColor = originalBackground;
+    });
+
+    var coords = "clientX: " + x1 + ", clientY: " + y1 + "<br/>";
+    coords += "offsetX: " + x2 + ", offsetY: " + y2 + "<br/>";
+    coords += "screenX: " + x3 + ", screenY: " + y3+"<br/>";
+    coords += "test" + test++;
+    document.getElementById("debug_out").innerHTML = coords;
+
+    }
+    window.onclick = function(){
+
+		var background_img = "/background/img_";
+
+		var number = Math.floor(Math.random() * 3) + 1;
+
+		var container = document.getElementById("debug_out");
+
+        var test = "C:/Users/99apo/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/KakaoTalk_20221204_183256103.jpg"
+
+		background_img += test;
+
+		container.style.backgroundImage = "url('" + background_img + "')";
+
+	}
+
+
+</script>
+<p>아래 빈공간 아무곳에서 클릭해보세요.</p>
+
+<div
+        id="debug_out"
+        style="margin:10px;
+               width:1000px;
+               height:1000px;
+               border:1px solid red;
+               cursor:pointer;background-image:url('https://cdn.pixabay.com/photo/2019/08/19/15/13/eiffel-tower-4416700__340.jpg');"
+        onclick="action_coords(event)">debug out</div>
