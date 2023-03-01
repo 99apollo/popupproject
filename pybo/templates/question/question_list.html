@@ -23,46 +23,30 @@
     var x3 = event.screenX;
     var y3 = event.screenY;
     var background_img=["#FC5C7D","6A82FB"];
-
     const body = document.getElementById("debug_out");
     const originalBackground = body.style.backgroundColor;
-
     body.addEventListener('mousedown', () => {
       // 마우스 버튼이 눌릴 때의 이벤트 처리
+      //test
       body.style.backgroundColor = 'blue';
-
-
     });
-
-
-
-
     body.addEventListener('mouseup', () => {
       // 마우스 버튼이 떼어질 때의 이벤트 처리
       body.style.backgroundColor = originalBackground;
     });
-
     var coords = "clientX: " + x1 + ", clientY: " + y1 + "<br/>";
     coords += "offsetX: " + x2 + ", offsetY: " + y2 + "<br/>";
     coords += "screenX: " + x3 + ", screenY: " + y3+"<br/>";
     coords += "test" + test++;
     document.getElementById("debug_out").innerHTML = coords;
-
     }
     window.onclick = function(){
-
 		var background_img = "/background/img_";
-
 		var number = Math.floor(Math.random() * 3) + 1;
-
 		var container = document.getElementById("debug_out");
-
         var test = "C:/Users/99apo/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/KakaoTalk_20221204_183256103.jpg"
-
 		background_img += test;
-
 		container.style.backgroundImage = "url('" + background_img + "')";
-
 	}
 
 
